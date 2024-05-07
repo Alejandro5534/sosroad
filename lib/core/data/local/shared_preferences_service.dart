@@ -37,16 +37,6 @@ class SharedPrefsService implements LocalStorage {
     await _prefs?.setString(key, value);
   }
 
-  Future<bool?> _getBool(String key) async {
-    await _ensureInitialized();
-    return _prefs?.getBool(key);
-  }
-
-  Future<void> _setBool(String key, bool value) async {
-    await _ensureInitialized();
-    await _prefs?.setBool(key, value);
-  }
-
   Future<void> _ensureInitialized() async {
     if (_prefs == null) {
       await _init();

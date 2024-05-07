@@ -1,16 +1,51 @@
-# sosroad
+# Mobile Login/Registration System
 
-A new Flutter project.
+This Flutter project implements a user authentication system using mobile phone numbers with WhatsApp for code verification. It includes a streamlined three-screen workflow.
 
-## Getting Started
+## Problem Statement
 
-This project is a starting point for a Flutter application.
+The application facilitates user login and registration via mobile phone. The key features include:
+1. **Login/Registration:** Requests the user's mobile number and sends a verification code via WhatsApp.
+2. **Confirmation:** Users enter the received code for verification.
+3. **Home:** Welcome screen and maintains user session across app restarts if the number has already been confirmed.
 
-A few resources to get you started if this is your first Flutter project:
+## Tech Stack
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+This project uses Flutter along with several packages to enhance functionality:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- `go_router`: Manages navigation and routing in Flutter apps.
+- `flutter_riverpod`: A reactive state-management library that allows the building of complex and reactive applications.
+- `riverpod_annotation`: Used for generating boilerplate code for Riverpod, enhancing the development workflow with annotations.
+- `shared_preferences`: Provides a persistent store for simple data (like settings).
+- `dio`: A powerful HTTP client for Dart, which supports Interceptors, Global configuration, FormData, Request Cancellation, File downloading, Timeout etc.
+- `toastification`: Displays toast messages, a common feature for showing alerts or notifications.
+- `pin_code_fields`: A customizable widget for entering pin codes, typically used in verification screens.
+- `intl_phone_number_input`: Allows easy input of international phone numbers with an optional dropdown for country codes.
+
+## Getting Started with Flutter
+
+### Prerequisites
+
+Ensure you have Flutter installed on your system. If not, follow the instructions on the [Flutter official installation guide](https://flutter.dev/docs/get-started/install).
+
+### Installation
+
+Clone the repository:
+
+```
+git clone https://github.com/yourusername/mobile-login-system.git
+cd mobile-login-system
+```
+
+Install the required packages:
+
+```
+flutter pub get
+```
+
+Generate necessary code for Riverpod annotations (required for riverpod_annotation):
+
+```
+dart run build_runner build  # To build
+dart run build_runner watch  # To continuously watch the files and build
+```

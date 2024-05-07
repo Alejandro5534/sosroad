@@ -16,9 +16,9 @@ Dio dioClient(DioClientRef ref) {
   dio.interceptors.add(InterceptorsWrapper(
     onRequest: (options, handler) async {
       options.headers['Authorization'] = await sharedPrefs.getToken();
-      final uri = Uri.parse('${options.baseUrl}${options.path}')
-          .replace(queryParameters: options.queryParameters);
-      print("URL: $uri, Headers: ${options.headers}");
+      // final uri = Uri.parse('${options.baseUrl}${options.path}')
+      //     .replace(queryParameters: options.queryParameters);
+      // print("URL: $uri, Headers: ${options.headers}");
       handler.next(options);
     },
   ));

@@ -25,21 +25,17 @@ class TokenService {
 
   Future<String?> getApiToken() async {
     final Dio dio = ref.read(dioClientProvider);
-    print('Before request');
     final responseToken = await dio.post(
       ApiConstants.token,
       queryParameters: {'keycode': ApiConstants.tokenKeyCode},
     );
-    print('Before token');
     final deserialize = TokenModel.fromMap(responseToken.data);
     if (deserialize.code == 200) {
-      print('Success token');
       final token = deserialize.data.authorized;
       final sharedPrefs = ref.read(sharedPreferencesProvider);
       sharedPrefs.setToken(token);
       return token;
     }
-    print('Failure token');
     return null;
   }
 }

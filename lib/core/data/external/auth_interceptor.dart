@@ -12,12 +12,10 @@ class AuthInterceptor extends Interceptor {
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
     final tokenProvide = ref.read(tokenProvider);
-    print('object');
     String? token = await tokenProvide.getPreferenceToken();
     token ??= await tokenProvide.getApiToken();
     if (token != null) {
       options.headers['Authorization'] = 'Bearer $token';
-      print('Inserting token: $token');
     }
     return super.onRequest(options, handler);
   }
