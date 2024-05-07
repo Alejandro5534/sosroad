@@ -20,7 +20,6 @@ This project uses Flutter along with several packages to enhance functionality:
 - `dio`: A powerful HTTP client for Dart, which supports Interceptors, Global configuration, FormData, Request Cancellation, File downloading, Timeout etc.
 - `toastification`: Displays toast messages, a common feature for showing alerts or notifications.
 - `pin_code_fields`: A customizable widget for entering pin codes, typically used in verification screens.
-- `intl_phone_number_input`: Allows easy input of international phone numbers with an optional dropdown for country codes.
 
 ## Getting Started with Flutter
 
