@@ -1,7 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sosroad/core/data/local/local_storage.dart';
-import 'package:sosroad/features/auth/domain/user_model.dart';
 
 import 'shared_prefs_keys.dart';
 
@@ -55,33 +54,23 @@ class SharedPrefsService implements LocalStorage {
   }
 
   @override
-  Future<void> addUser(User user) async {
-    await _setString(SharedPrefsKeys.userName, user.userName);
-    await _setString(SharedPrefsKeys.userCellphone, user.cellphone);
+  Future<void> setPhoneNumber(String userCellphone) async {
+    await _setString(SharedPrefsKeys.userCellphone, userCellphone);
   }
 
   @override
-  Future<User?> getByUserName(String name) async {
-    final String? userName = await _getString(SharedPrefsKeys.userName);
-    if (userName == null) {
-      return null;
-    }
-    if (userName != name) {
-      return null;
-    }
-    final password = await _getString(SharedPrefsKeys.userCellphone);
-    if (password == null) {
-      return null;
-    }
+  Future<String?> getPhoneNumber() async {
+    final String? userCellphone =
+        await _getString(SharedPrefsKeys.userCellphone);
 
-    return User(userName: userName, cellphone: password);
+    return userCellphone;
   }
 
-  Future<void> setIsSigned(bool isSigned) async {
-    await _setBool(SharedPrefsKeys.isSignedIn, isSigned);
+  Future<void> setToken(String token) async {
+    await _setString(SharedPrefsKeys.token, token);
   }
 
-  Future<bool?> getIsSigned() async {
-    return await _getBool(SharedPrefsKeys.isSignedIn);
+  Future<String?> getToken() async {
+    return await _getString(SharedPrefsKeys.token);
   }
 }
